@@ -25,7 +25,8 @@ public class Main {
                     ");";
 
             statement.executeUpdate(sql);
-
+            
+            //end connection
             connection.close();
             statement.close();
         } catch (ClassNotFoundException e) {
