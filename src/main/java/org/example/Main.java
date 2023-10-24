@@ -6,6 +6,7 @@ public class Main {
 
     static final String JDBC_Driver ="org.h2.Driver";
     static final String DB_url = "jdbc:h2:./src/main/java/db/carsharing";
+    //static final String DB_url ="jdbc:h2:~/test";
     public static void main(String[] args) {
         Connection connection = null;
         Statement statement = null;
