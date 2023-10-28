@@ -40,3 +40,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+###Databases###
+./src/java/db
+./src/main/java/db

@@ -25,8 +25,6 @@ public class Application {
     public void startApplication(){
         printMenu();
         int input = scanner.nextInt();
-
-
         while(input == 1){
             managerMenu();
             input = scanner.nextInt();
