@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DbClient {
-    private static final String path_To_Database = "jdbc:h2:./src/carsharing/db/carsharing";
+    private static final String path_To_Database = "jdbc:h2:./src/main/java/db/carsharing";
     private Connection connection;
     private Statement statement;
 
