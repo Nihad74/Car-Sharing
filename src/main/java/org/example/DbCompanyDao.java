@@ -7,7 +7,7 @@ import java.util.List;
 public class DbCompanyDao implements CompanyDao {
     private static final String JDBC_Driver = "org.h2.Driver";
 
-    private static final String create_DB = "CREATE TABLE IF NOT EXISTS COMPANY(" +
+    private static final String create_CompanyDB = "CREATE TABLE IF NOT EXISTS COMPANY(" +
             "id INTEGER PRIMARY KEY AUTO_INCREMENT," +
             "name VARCHAR(40) UNIQUE NOT NULL" +
             ");";
@@ -22,30 +22,18 @@ public class DbCompanyDao implements CompanyDao {
     private final DbClient dbClient;
 
     public DbCompanyDao(){
-        Connection con;
-        Statement statement;
         dbClient = new DbClient(JDBC_Driver);
-        dbClient.run(create_DB);
-
-        //System.out.println("Company data structure create");
+        dbClient.run(create_CompanyDB);
     }
 
     @Override
     public List<Company> findAll() {
-        return dbClient.selectForList(select_all);
+        return dbClient.selectForListCompany(select_all);
     }
 
     @Override
     public Company findById(int id) {
-        Company company = dbClient.select(String.format(select_by_ID,id));
-
-        if(company != null){
-            //System.out.println("Company: Id: " + company.getId() + ", name: " + company.getName()+ " found");
-            return company;
-        }else{
-            //System.out.println("No company matches the id");
-            return null;
-        }
+        return dbClient.selectCompany(String.format(select_by_ID,id));
     }
 
     @Override
@@ -56,12 +44,10 @@ public class DbCompanyDao implements CompanyDao {
     @Override
     public void update(Company company) {
         dbClient.run(String.format(update_data, company.getName(), company.getId()));
-        //System.out.println("Company: Id: " + company.getId() + ", name: " + company.getName()+ " updated");
     }
 
     @Override
     public void deleteById(int id) {
         dbClient.run(String.format(delete_data, id));
-        //System.out.println("Company: Id: " + id +", deleted");
     }
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DbClient {
-    private static final String path_To_Database = "jdbc:h2:./src/main/java/db/carsharing";
+    private static final String path_To_Database = "jdbc:h2:./src/carsharing/db/carsharing";
     private Connection connection;
     private Statement statement;
 
@@ -28,8 +28,8 @@ public class DbClient {
         }
     }
 
-    public Company select(String query){
-        List<Company> companies = selectForList(query);
+    public Company selectCompany(String query){
+        List<Company> companies = selectForListCompany(query);
         if(companies.size() == 1){
             return companies.get(0);
         }else if(companies.isEmpty()){
@@ -38,14 +38,44 @@ public class DbClient {
             throw new IllegalStateException("Query return more than one object");
         }
     }
+    public Car selectCar(String query){
+        List<Car> cars = selectForListCars(query);
+        if(cars.size() == 1){
+            return cars.get(0);
+        }else if(cars.isEmpty()){
+            return null;
+        }else{
+            throw new IllegalStateException("Query return more than one object");
+        }
+    }
 
-    public List<Company> selectForList(String query)  {
+    public List<Car> selectForListCars(String query) {
+        List<Car> cars = new ArrayList<>();
+        try(ResultSet resultSetItem = statement.executeQuery(query)){
+            while(resultSetItem.next() ){
+                //Retrieve column values
+                int id = resultSetItem.getInt("id");
+                String name = resultSetItem.getString("name");
+                int company_id = resultSetItem.getInt("COMPANY_ID");
+                Car car = new Car(id, name,company_id);
+                cars.add(car);
+            }
+            return cars;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return cars;
+    }
+
+
+    public List<Company> selectForListCompany(String query)  {
         List<Company> companies = new ArrayList<>();
         try(ResultSet resultSetItem = statement.executeQuery(query)){
             while(resultSetItem.next() ){
                 //Retrieve column values
+                int id = resultSetItem.getInt("id");
                 String name = resultSetItem.getString("name");
-                Company company = new Company(name);
+                Company company = new Company(id, name);
                 companies.add(company);
             }
             return companies;

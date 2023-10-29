@@ -1,16 +1,19 @@
 package org.example;
 
-public class Company {
+public class Car {
     private int id;
     private String name;
+    private int company_id;
 
-    public Company(int id, String name) {
+    public Car(int id, String name, int company_id) {
         this.id = id;
         this.name = name;
+        this.company_id = company_id;
     }
 
-    public Company(String name){
+    public Car(String name, int company_id){
         this.name = name;
+        this.company_id = company_id;
     }
 
     public int getId() {
@@ -29,11 +32,11 @@ public class Company {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Company{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public int getCompany_id() {
+        return company_id;
+    }
+
+    public void setCompany_id(int company_id) {
+        this.company_id = company_id;
     }
 }
