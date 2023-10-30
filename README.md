@@ -11,12 +11,12 @@ A simple car sharing application made with H2 Database
 ### First Menu
 ![image](https://github.com/Nihad74/Car-Sharing/assets/113698778/f342de9c-ae84-4b8c-b318-2a155bde9972)
 
-### Login as a manager (lines marked with '>' are user input in console)
+### Login as a manager (lines marked with '>>' are user input in console)
 1. Log in as a manager
 2. Log in as a customer
 3. Create a customer
 0. Exit
-> 1
+>> 1
 1. Company list
 2. Create a company
 0. Back
