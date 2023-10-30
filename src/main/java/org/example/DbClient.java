@@ -19,14 +19,6 @@ public class DbClient {
             e.printStackTrace();
         }
     }
-    public void terminate(){
-        try {
-            connection.close();
-            statement.close();
-        }catch(SQLException e ){
-            e.printStackTrace();
-        }
-    }
 
     public void run(String str) {
         try{
@@ -91,5 +83,40 @@ public class DbClient {
             e.printStackTrace();
         }
         return companies;
+    }
+
+    public Customer selectCustomer(String query){
+        List<Customer> customers = selectForListCustomer(query);
+        if(customers.isEmpty()){
+            return null;
+        }else{
+            return customers.get(0);
+        }
+    }
+
+    public List<Customer> selectForListCustomer(String query) {
+        List<Customer> customers = new ArrayList<>();
+        try(ResultSet set = statement.executeQuery(query);){
+            while(set.next()){
+                int id = set.getInt("ID");
+                String name = set.getString("NAME");
+                int rented_car_id = set.getInt("RENTED_CAR_ID");
+                Customer customer = new Customer(id, name, rented_car_id);
+                customers.add(customer);
+            }
+            return customers;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return customers;
+    }
+
+    public void terminate(){
+        try {
+            connection.close();
+            statement.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 }
