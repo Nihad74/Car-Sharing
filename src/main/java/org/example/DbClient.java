@@ -96,11 +96,11 @@ public class DbClient {
 
     public List<Customer> selectForListCustomer(String query) {
         List<Customer> customers = new ArrayList<>();
-        try(ResultSet set = statement.executeQuery(query);){
-            while(set.next()){
-                int id = set.getInt("ID");
-                String name = set.getString("NAME");
-                int rented_car_id = set.getInt("RENTED_CAR_ID");
+        try(ResultSet resultSetItem = statement.executeQuery(query);){
+            while(resultSetItem.next()){
+                int id = resultSetItem.getInt("ID");
+                String name = resultSetItem.getString("NAME");
+                int rented_car_id = resultSetItem.getInt("RENTED_CAR_ID");
                 Customer customer = new Customer(id, name, rented_car_id);
                 customers.add(customer);
             }

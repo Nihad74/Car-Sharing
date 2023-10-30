@@ -28,9 +28,9 @@ public class DbCustomerDao implements CustomerDao{
     private final String update= "UPDATE CUSTOMER SET NAME = '%s' WHERE ID = %d";
     private final String update_rentedCar_toNull ="UPDATE CUSTOMER SET RENTED_CAR_ID = NULL WHERE ID = %d";
 
-    private final String rentedCars = "SELECT * FROM CAR WHERE ID = %d";
+    private final String rentedCars = "SELECT * FROM CAR,CUSTOMER WHERE CAR.ID = CUSTOMER.RENTED_CAR_ID";
 
-    private final String controlRentedCar = "SELECT RENTED_CAR_ID FROM CUSTOMER WHERE ID = %d";
+    private final String controlRentedCar = "SELECT * FROM CUSTOMER WHERE ID = %d";
     private final String update_rentedCar ="UPDATE CUSTOMER SET RENTED_CAR_ID = %d WHERE ID = %d";
 
 
@@ -70,7 +70,7 @@ public class DbCustomerDao implements CustomerDao{
     }
 
     public List<Car> rentedCars(int id){
-        return dbClient.selectForListCars(String.format(rentedCars, id));
+        return dbClient.selectForListCars(String.format(rentedCars));
     }
 
     public void updateRentedCar_ToNull(int id){

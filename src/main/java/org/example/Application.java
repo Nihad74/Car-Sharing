@@ -79,6 +79,7 @@ public class Application {
             rentACar(customerLevel2input);
         }else if(customerLevel3input == 2){
             returnRentedCar(customerLevel2input);
+            level3Customer(customerLevel2input);
         }else{
             myRentedCar(customerLevel2input);
             level3Customer(customerLevel2input);
@@ -91,21 +92,28 @@ public class Application {
             System.out.println("The company list is empty!");
             level3Customer(customerLevel2input);
         } else {
-            System.out.println("Choose a company:");
-            for (int i = 0; i < companies.size(); i++) {
-                System.out.println(i + 1 + ". " + companies.get(i).getName());
-            }
-            int companychosen = scanner.nextInt();
             if(customerDB.controlRentedCar(customerLevel2input).getRented_car_id() != 0){
                 System.out.println("You've already rented a car!");
                 level3Customer(customerLevel2input);
             }else {
-                List<Car> cars = showAvailableCars(companychosen);
-                int carChosen = scanner.nextInt();
-                if(carChosen == 0){
+                System.out.println("Choose a company:");
+                for (int i = 0; i < companies.size(); i++) {
+                    System.out.println(i + 1 + ". " + companies.get(i).getName());
+                }
+                System.out.println("0. Back");
+                int companyChosen = scanner.nextInt();
+                if(companyChosen == 0){
                     level3Customer(customerLevel2input);
-                }else{
-                    customerDB.updateRentedCar(cars.get(carChosen).getId(),customerLevel2input);
+                }else {
+                    List<Car> cars = showAvailableCars(companyChosen);
+                    int carChosen = scanner.nextInt();
+                    if (carChosen == 0) {
+                        level3Customer(customerLevel2input);
+                    } else {
+                        customerDB.updateRentedCar(cars.get(carChosen - 1).getId(), customerLevel2input);
+                        System.out.println("You rented '" + cars.get(carChosen - 1).getName() + "'");
+                        level3Customer(customerLevel2input);
+                    }
                 }
             }
         }

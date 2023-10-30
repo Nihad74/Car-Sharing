@@ -23,8 +23,7 @@ public class DbCarDao implements CarDao{
     private static String deleteById = "DELETE FROM CAR WHERE ID = %d";
 
     private static String findByCompanyId = "SELECT * FROM CAR WHERE COMPANY_ID = %d";
-    private static String availableCars = "SELECT * FROM CAR LEFT JOIN CUSTOMER ON CAR.ID = CUSTOMER.RENTED_CAR_ID" +
-            "WHERE CUSTOMER.RENTED_CAR_ID IS NULL AND COMPANY_ID = %d";
+    private static String availableCars = "SELECT * FROM CAR LEFT JOIN CUSTOMER ON CAR.id = CUSTOMER.RENTED_CAR_ID WHERE CUSTOMER.RENTED_CAR_ID IS NULL AND COMPANY_ID = %d;";
 
 
     private DbClient dbClient;
