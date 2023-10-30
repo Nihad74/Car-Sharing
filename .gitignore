@@ -40,3 +40,8 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+###Databases###
+./src/java/db
+./src/main/java/db/carsharing.mv.db
+./src/main/java/db/carsharing.trace.db
