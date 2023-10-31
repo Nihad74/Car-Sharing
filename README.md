@@ -16,11 +16,11 @@ A simple car sharing application made with H2 Database
 2. Log in as a customer
 3. Create a customer
 0. Exit
-= 1
+>>1
 1. Company list
 2. Create a company
 0. Back
-= 1
+>>1
 The company list is empty!
 1. Company list
 2. Create a company
