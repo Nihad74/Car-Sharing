@@ -20,32 +20,41 @@ A simple car sharing application made with H2 Database
 1. Company list
 2. Create a company
 0. Back
+
 >>1
+
 The company list is empty!
 1. Company list
 2. Create a company
 0. Back
-= 1
+   
+>> 1
+
 The company list is empty!
-1. Company list
-2. Create a company
+2. Company list
+3. Create a company
 0. Back
-= 2
+
+>> 2
 Enter the company name:
-First Company
+>>First Company
 The company was created!
 
 1. Company list
 2. Create a company
 0. Back
-= 1
+   
+>>1
+
 Choose the company:
 1. First Company
 0. Back
-= 1
+   
+>>1
+
 First Company company
-1. Car list
-2. Create a car
+2. Car list
+3. Create a car
 0. Back
 = 1
 The car list is empty!
@@ -53,39 +62,48 @@ First Company company
 1. Car list
 2. Create a car
 0. Back
-= 2
+
+>>2
+
 Enter the car name:
-BMW
+>>BMW
 The car was created! 
 
 First Company company
 1. Car list
 2. Create a car
 0. Back
-= 1
+   
+>>1
+
 Car list:
 1. BMW
 First Company company
 1. Car list
 2. Create a car
 0. Back
-= 1
+
+>>1
+
 Car list:
-1. BMW
+2. BMW
 First Company company
 1. Car list
 2. Create a car
 0. Back
-= 0
+
+>>0
 1. Company list
 2. Create a company
 0. Back
-= 0
-1. Log in as a manager
-2. Log in as a customer
-3. Create a customer
+
+>>0
+2. Log in as a manager
+3. Log in as a customer
+4. Create a customer
 0. Exit
-= 0
+
+>>0
 
 
 
