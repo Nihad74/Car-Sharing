@@ -67,6 +67,7 @@ First Company company
 
 Enter the car name:
 >>BMW
+
 The car was created! 
 
 First Company company
